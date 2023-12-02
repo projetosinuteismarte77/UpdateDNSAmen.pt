@@ -1,3 +1,3 @@
 ﻿using UpdateAmenDNSSelenium;
 CreateOrUpdateCSV.Execute();
-SeleniumCode.UpdateDNS(true);
+SeleniumCode.UpdateDNS(false);
