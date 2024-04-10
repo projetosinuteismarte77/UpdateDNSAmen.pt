@@ -19,7 +19,7 @@ namespace UpdateAmenDNSSelenium
             if(headless)
                 options.AddArgument("--headless=new");
             var service = FirefoxDriverService.CreateDefaultService("/home/pi/noderedstuff/update_godaddy/UpdateDNSAmen.pt/geckodriver");
-            var driver = new FirefoxDriver(options);//new ChromeDriver(options);
+            var driver = new FirefoxDriver(service);//new ChromeDriver(options);
             Console.WriteLine(driver.Manage().Window.Size.ToString());
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
             var initialURL = "https://controlpanel.amen.pt/welcome.html";
