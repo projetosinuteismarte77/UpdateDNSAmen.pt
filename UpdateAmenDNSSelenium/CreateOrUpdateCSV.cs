@@ -12,10 +12,12 @@ namespace UpdateAmenDNSSelenium
 
 		public Record(string nome, string tipo, string valor, int ttl = 900)
 		{
-			this.NOME  = nome;
-            this.VALOR = valor;
-            this.TIPO  = tipo;
-            this.TTL   = ttl;
+			NOME  = nome;
+            if (!NOME.EndsWith("."))
+                NOME = NOME + ".";
+            VALOR = valor;
+            TIPO  = tipo;
+            TTL   = ttl;
         }
         public String ToString()
         {
@@ -25,7 +27,7 @@ namespace UpdateAmenDNSSelenium
 
 	public class CreateOrUpdateCSV
 	{
-		public static string dnsFile = AppDomain.CurrentDomain.BaseDirectory + "dns.csv";
+		public static string dnsFile = Path.GetFullPath("dns.csv");
 		public List<Record> listaRecords = new List<Record>();
 
 		public static void Execute()
@@ -68,10 +70,7 @@ namespace UpdateAmenDNSSelenium
             listaRecords.Add(new Record("homeassistant.martinho.pt.", Record.A, myip));
             listaRecords.Add(new Record("swag.martinho.pt.", Record.A, myip));
             listaRecords.Add(new Record("_atproto", Record.TXT, "did=did:plc:5yscnem3yijhdwwh4nwed6ut"));
-            listaRecords.Add(new Record("_minecraft._tcp.mc", Record.SRV, "0 5 25565 mc.martinho.pt."));
-            listaRecords.Add(new Record("mc.martinho.pt", Record.CNAME, "ricadinho.eu"));
-            listaRecords.Add(new Record("_minecraft._tcp.mine", Record.SRV, "0 5 25565 apt.martinho.pt."));
-            listaRecords.Add(new Record("apt.martinho.pt", Record.A, "129.213.95.100"));
+            listaRecords.Add(new Record("vpscs.martinho.pt", Record.A, "45.13.119.86"));
         }
     }
 }

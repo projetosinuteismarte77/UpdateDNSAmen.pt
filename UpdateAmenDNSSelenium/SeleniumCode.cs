@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 namespace UpdateAmenDNSSelenium
@@ -11,7 +12,7 @@ namespace UpdateAmenDNSSelenium
 		{
 		}
 
-		static public void UpdateDNS(bool headless)
+		static public void UpdateDNS(bool headless, string user, string password)
 		{
             var options = new ChromeOptions();
             if(headless)
@@ -31,12 +32,12 @@ namespace UpdateAmenDNSSelenium
                 var divInputs = driver.FindElements(By.ClassName("standard-login-module"));
                 if (divInputs.Count == 0)
                     continue;
+                else if (count > 10) throw new Exception("Demasiadas tentativas nas credenciais!");
                 var inputs = divInputs.First().FindElements(By.TagName("input"));
                 if (headless) Thread.Sleep(1000);
-                inputs[0].Clear(); inputs[0].SendKeys("ma");
+                inputs[0].Clear(); inputs[0].SendKeys(user);
                 if (headless) Thread.Sleep(300);
-                inputs[0].SendKeys("rto");
-                inputs[1].Clear(); inputs[1].SendKeys("");
+                inputs[1].Clear(); inputs[1].SendKeys(password);
                 if (headless) Thread.Sleep(800);
                 driver.FindElements(By.TagName("button")).Where(elem => elem.GetAttribute("type") == "submit").First().Click();
                 Thread.Sleep(3000);
@@ -64,9 +65,14 @@ namespace UpdateAmenDNSSelenium
             Console.WriteLine("Submeti input");
             Thread.Sleep(6000);
             driver.FindElement(By.CssSelector(".submit.btn.btn-md.btn-primary")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.Id("modalDNS")).FindElement(By.CssSelector(".pribttn.nm.apply")).Click();
+            Thread.Sleep(6000);
             Console.WriteLine("Apliquei alterações");
+            Thread.Sleep(1000);
             driver.Quit();
         }
-	}
+
+    }
 }
 
