@@ -17,7 +17,8 @@ namespace UpdateAmenDNSSelenium
 		{
             var options = new FirefoxOptions();
             if(headless)
-                options.AddArgument("--headless=new");
+                options.AddArgument("--headless");
+
             //options.BinaryLocation = "/home/pi/noderedstuff/update_godaddy/UpdateDNSAmen.pt/geckodriver";
             var driver = new FirefoxDriver("/home/pi/noderedstuff/update_godaddy/UpdateDNSAmen.pt/geckodriver", options);//new ChromeDriver(options);
             Console.WriteLine(driver.Manage().Window.Size.ToString());
