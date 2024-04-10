@@ -21,7 +21,7 @@ CreateOrUpdateCSV.Execute();
 try
 {
     SeleniumCode.UpdateDNS(false, user, password);
-}catch(Exception e)
+} catch(Exception e)
 {
     Console.WriteLine(e.Message);
 }

@@ -4,6 +4,9 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
+
 namespace UpdateAmenDNSSelenium
 {
 	public class SeleniumCode
@@ -17,6 +20,7 @@ namespace UpdateAmenDNSSelenium
             var options = new ChromeOptions();
             if(headless)
                 options.AddArgument("--headless=new");
+            new DriverManager().SetUpDriver(new ChromeConfig());
             var driver = new ChromeDriver(options);
             Console.WriteLine(driver.Manage().Window.Size.ToString());
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
