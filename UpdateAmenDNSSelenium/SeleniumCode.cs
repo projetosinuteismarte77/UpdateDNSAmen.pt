@@ -1,6 +1,6 @@
 ﻿using System;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -15,10 +15,10 @@ namespace UpdateAmenDNSSelenium
 
 		static public void UpdateDNS(bool headless, string user, string password)
 		{
-            var options = new ChromeOptions();
+            var options = new FirefoxOptions();
             if(headless)
                 options.AddArgument("--headless=new");
-            var driver = new ChromeDriver(options);
+            var driver = new FirefoxDriver(options);//new ChromeDriver(options);
             Console.WriteLine(driver.Manage().Window.Size.ToString());
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
             var initialURL = "https://controlpanel.amen.pt/welcome.html";

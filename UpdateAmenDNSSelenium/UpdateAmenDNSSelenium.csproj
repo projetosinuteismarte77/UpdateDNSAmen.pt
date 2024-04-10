@@ -14,7 +14,6 @@
     <PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
     <PackageReference Include="DnsClient" Version="1.7.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="123.0.6312.8600" />
   </ItemGroup>
   <ItemGroup>
     <None Update="dns.csv">
