@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
@@ -13,14 +14,25 @@ namespace UpdateAmenDNSSelenium
 		{
 		}
 
+        public static string findCommand(string whatToFind)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo() { FileName = "/bin/bash", Arguments = "find /snap/firefox -name"+whatToFind, RedirectStandardInput = true };
+            Process proc = new Process() { StartInfo = startInfo, };
+            proc.Start();
+            proc.WaitForExit();
+            var output = proc.StandardOutput.ReadToEnd();
+            return output;
+        }
+
 		static public void UpdateDNS(bool headless, string user, string password)
 		{
             var options = new FirefoxOptions();
             if(headless)
-                options.AddArgument("--headless");
-
-            //options.BinaryLocation = "/home/pi/noderedstuff/update_godaddy/UpdateDNSAmen.pt/geckodriver";
-            var driver = new FirefoxDriver("/home/pi/noderedstuff/update_godaddy/UpdateDNSAmen.pt/geckodriver", options);//new ChromeDriver(options);
+                options.AddArgument("-headless");
+            var geckodriverPath = OperatingSystem.IsMacOS() ? "/Users/marte/Documents/RandomProjeots/UpdateAmenDNSSelenium/UpdateAmenDNSSelenium/geckodriver" : findCommand("geckodriver");//"/home/pi/noderedstuff/update_godaddy/UpdateDNSAmen.pt/geckodriver";
+            if (OperatingSystem.IsLinux())
+                options.BinaryLocation = findCommand("firefox");
+            var driver = new FirefoxDriver(geckodriverPath, options);//new ChromeDriver(options);
             Console.WriteLine(driver.Manage().Window.Size.ToString());
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
             var initialURL = "https://controlpanel.amen.pt/welcome.html";

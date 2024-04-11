@@ -19,7 +19,8 @@ namespace UpdateAmenDNSSelenium
             TIPO  = tipo;
             TTL   = ttl;
         }
-        public String ToString()
+        override
+        public string ToString()
         {
             return "\"" + NOME + "\"," + TTL + ",\"" + TIPO + "\",\"" + VALOR + "\"";
         }
