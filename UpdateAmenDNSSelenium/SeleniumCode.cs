@@ -21,7 +21,7 @@ namespace UpdateAmenDNSSelenium
             proc.Start();
             proc.WaitForExit();
             var output = proc.StandardOutput.ReadToEnd();
-            return output;
+            return output.Split("\n").Last();
         }
 
 		static public void UpdateDNS(bool headless, string user, string password)
