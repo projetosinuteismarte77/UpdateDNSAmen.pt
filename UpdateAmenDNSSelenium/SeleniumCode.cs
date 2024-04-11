@@ -29,9 +29,9 @@ namespace UpdateAmenDNSSelenium
             var options = new FirefoxOptions();
             if(headless)
                 options.AddArgument("-headless");
-            var geckodriverPath = OperatingSystem.IsMacOS() ? "/Users/marte/Documents/RandomProjeots/UpdateAmenDNSSelenium/UpdateAmenDNSSelenium/geckodriver" : "/snap/firefox/4095/usr/lib/firefox/geckodriver";//findCommand("geckodriver");//"/home/pi/noderedstuff/update_godaddy/UpdateDNSAmen.pt/geckodriver";
+            var geckodriverPath = OperatingSystem.IsMacOS() ? "/Users/marte/Documents/RandomProjeots/UpdateAmenDNSSelenium/UpdateAmenDNSSelenium/geckodriver" : "/snap/firefox/4038/usr/lib/firefox/geckodriver";//findCommand("geckodriver");//"/home/pi/noderedstuff/update_godaddy/UpdateDNSAmen.pt/geckodriver";
             if (OperatingSystem.IsLinux())
-                options.BinaryLocation = "/snap/firefox/4095/usr/lib/firefox/firefox";//findCommand("firefox");
+                options.BinaryLocation = "/snap/firefox/4038/usr/lib/firefox/firefox";//findCommand("firefox");
             var driver = new FirefoxDriver(geckodriverPath, options);//new ChromeDriver(options);
             Console.WriteLine(driver.Manage().Window.Size.ToString());
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
