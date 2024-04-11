@@ -16,7 +16,7 @@ namespace UpdateAmenDNSSelenium
 
         public static string findCommand(string whatToFind)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo() { FileName = "/bin/bash", Arguments = "find /snap/firefox -name"+whatToFind, RedirectStandardInput = true, UseShellExecute = false };
+            ProcessStartInfo startInfo = new ProcessStartInfo() { FileName = "/bin/bash", Arguments = "find /snap/firefox -name"+whatToFind, RedirectStandardInput = true, UseShellExecute = true };
             Process proc = new Process() { StartInfo = startInfo, };
             proc.Start();
             proc.WaitForExit();
