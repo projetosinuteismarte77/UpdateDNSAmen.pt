@@ -32,7 +32,10 @@ namespace UpdateAmenDNSSelenium
             var geckodriverPath = OperatingSystem.IsMacOS() ? "/Users/marte/Documents/RandomProjeots/UpdateAmenDNSSelenium/UpdateAmenDNSSelenium/geckodriver" : "/snap/firefox/4038/usr/lib/firefox/geckodriver";//findCommand("geckodriver");//"/home/pi/noderedstuff/update_godaddy/UpdateDNSAmen.pt/geckodriver";
             if (OperatingSystem.IsLinux())
                 options.BinaryLocation = "/snap/firefox/4038/usr/lib/firefox/firefox";//findCommand("firefox");
+            options.LogLevel = FirefoxDriverLogLevel.Fatal;
+            options.SetLoggingPreference(LogType.Driver, LogLevel.Off);
             var driver = new FirefoxDriver(geckodriverPath, options);//new ChromeDriver(options);
+            Thread.Sleep(15000);
             Console.WriteLine(driver.Manage().Window.Size.ToString());
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
             var initialURL = "https://controlpanel.amen.pt/welcome.html";
