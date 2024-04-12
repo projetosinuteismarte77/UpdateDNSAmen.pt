@@ -72,7 +72,7 @@ namespace UpdateAmenDNSSelenium
             listaRecords.Add(new Record("swag.martinho.pt.", Record.A, myip));
             listaRecords.Add(new Record("_atproto", Record.TXT, "did=did:plc:5yscnem3yijhdwwh4nwed6ut"));
             listaRecords.Add(new Record("vpscs.martinho.pt", Record.A, "45.13.119.86"));
-            listaRecords.Add(new Record("testingings.martinho.pt", Record.A, "1.1.1.1"));
+            listaRecords.Add(new Record("testingingstt.martinho.pt", Record.A, "2.2.2.2"));
         }
     }
 }
