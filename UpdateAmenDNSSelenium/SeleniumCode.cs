@@ -85,7 +85,7 @@ namespace UpdateAmenDNSSelenium
             var alert = driver.SwitchTo().Alert();
             alert.Accept();
             Log("Estou na pagina do dns");
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
             driver.FindElement(By.CssSelector(".import.btn.btn-sm.btn-line-primary")).Click();
             Log("Vou fazer input");
             var fileInput = driver.FindElement(By.Id("dnsUploadedFile"));
@@ -94,7 +94,7 @@ namespace UpdateAmenDNSSelenium
             Log("Submeti input");
             Thread.Sleep(6000);
             driver.FindElement(By.CssSelector(".submit.btn.btn-md.btn-primary")).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
             driver.FindElement(By.Id("modalDNS")).FindElement(By.CssSelector(".pribttn.nm.apply")).Click();
             Thread.Sleep(6000);
             Log("Apliquei alterações");
