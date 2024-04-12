@@ -46,7 +46,7 @@ namespace UpdateAmenDNSSelenium
             options.SetLoggingPreference(LogType.Driver, LogLevel.Off);
             var driver = new FirefoxDriver(geckodriverPath, options);//new ChromeDriver(options);
             Log(driver.Manage().Window.Size.ToString());
-            var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+            var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 15));
             var initialURL = "https://controlpanel.amen.pt/welcome.html";
             driver.Navigate().GoToUrl(initialURL);
             wait.Until(ExpectedConditions.ElementExists(By.CssSelector(".iubenda-cs-reject-btn.iubenda-cs-btn-primary")));
