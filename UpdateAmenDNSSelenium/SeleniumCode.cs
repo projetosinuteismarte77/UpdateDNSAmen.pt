@@ -35,7 +35,6 @@ namespace UpdateAmenDNSSelenium
             options.LogLevel = FirefoxDriverLogLevel.Fatal;
             options.SetLoggingPreference(LogType.Driver, LogLevel.Off);
             var driver = new FirefoxDriver(geckodriverPath, options);//new ChromeDriver(options);
-            Thread.Sleep(15000);
             Console.WriteLine(driver.Manage().Window.Size.ToString());
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
             var initialURL = "https://controlpanel.amen.pt/welcome.html";
@@ -44,10 +43,12 @@ namespace UpdateAmenDNSSelenium
             driver.FindElement(By.CssSelector(".iubenda-cs-reject-btn.iubenda-cs-btn-primary")).Click();
             Console.WriteLine("Fazer Login");
             int count = 0;
+            Thread.Sleep(15000);
             while (driver.Url == initialURL)
             {
-                var divInputs = driver.FindElements(By.ClassName("standard-login-module"));
+                driver.Navigate().Refresh();
                 Console.WriteLine("Vou tentar count " + (count++) + " " + driver.Url);
+                var divInputs = driver.FindElements(By.ClassName("standard-login-module"));
                 if (divInputs.Count == 0)
                     continue;
                 else if (count > 10) throw new Exception("Demasiadas tentativas nas credenciais!");
