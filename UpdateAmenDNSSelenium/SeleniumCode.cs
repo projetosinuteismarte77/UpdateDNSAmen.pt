@@ -47,7 +47,7 @@ namespace UpdateAmenDNSSelenium
             while (driver.Url == initialURL)
             {
                 var divInputs = driver.FindElements(By.ClassName("standard-login-module"));
-                Console.WriteLine("Vou tentar count " + (count++));
+                Console.WriteLine("Vou tentar count " + (count++) + " " + driver.Url);
                 if (divInputs.Count == 0)
                     continue;
                 else if (count > 10) throw new Exception("Demasiadas tentativas nas credenciais!");
