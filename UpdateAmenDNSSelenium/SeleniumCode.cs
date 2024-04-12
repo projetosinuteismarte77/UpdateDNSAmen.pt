@@ -72,7 +72,7 @@ namespace UpdateAmenDNSSelenium
                 Thread.Sleep(3000);
             }
             Log("Login Efetuado");
-            driver.FindElements(By.TagName("a")).Where(elem => elem.GetAttribute("href") != null && elem.GetAttribute("href") == "https://controlpanel.amen.pt/firstLevel/view.html?domain=martinho.pt").First().Click();
+            /*driver.FindElements(By.TagName("a")).Where(elem => elem.GetAttribute("href") != null && elem.GetAttribute("href") == "https://controlpanel.amen.pt/firstLevel/view.html?domain=martinho.pt").First().Click();
             wait.Until(ExpectedConditions.ElementExists(By.Id("webapp_domain")));
             if (headless) Thread.Sleep(300);
             driver.FindElement(By.Id("webapp_domain")).FindElement(By.TagName("a")).Click();
@@ -84,8 +84,10 @@ namespace UpdateAmenDNSSelenium
             wait.Until(ExpectedConditions.AlertIsPresent());
             var alert = driver.SwitchTo().Alert();
             alert.Accept();
+             */
+            driver.Navigate().GoToUrl("https://controlpanel.amen.pt/domains/dnsAdvanced.html?domain=martinho.pt");
+            Thread.Sleep(7000);
             Log("Estou na pagina do dns");
-            Thread.Sleep(5000);
             driver.FindElement(By.CssSelector(".import.btn.btn-sm.btn-line-primary")).Click();
             Log("Vou fazer input");
             var fileInput = driver.FindElement(By.Id("dnsUploadedFile"));
